@@ -49,7 +49,7 @@ class MyType implements Updateable {
 }
 
 class MyApplication {
-    SortedSet<MyType> mySortedSet = new UpdateableTreeSet<MyType>();
+    UpdateableTreeSet<MyType> mySortedSet = new UpdateableTreeSet<MyType>();
 
     // Add elements to mySortedSet...
 
@@ -57,9 +57,9 @@ class MyApplication {
         // Change or remove elements from inside a loop
         for (MyType element : mySortedSet) {
             if (removeCondition)
-                markForRemoval(element);
+                mySortedSet.markForRemoval(element);
             if (updateCondition)
-                markForUpdate(element, newValue);
+                mySortedSet.markForUpdate(element, newValue);
         }
 
         // Trigger bulk update
