@@ -166,7 +166,7 @@ public class UpdateableTreeSetTest
 		}
 
 		// Perform bulk update
-		medalRanking.updateAllMarked();
+		medalRanking.updateMarked();
 
 		// Check if some of the changed properties are as expected
 		assertEquals("FHV", medalRanking.first().country);
@@ -189,7 +189,7 @@ public class UpdateableTreeSetTest
 		// Verify that no-op update does not do any damage
 		medalRanking.markForUpdate(medalRanking.first());
 		medalRanking.markForUpdate(medalRanking.last());
-		medalRanking.updateAllMarked();
+		medalRanking.updateMarked();
 		assertTrue(isSortOrderOk(medalRanking));
 	}
 

@@ -51,7 +51,7 @@ import java.util.TreeSet;
  *         markForUpdate(element, newValue);
  * }
  *
- * mySortedSet.updateAllMarked();
+ * mySortedSet.updateMarked();
  * </pre>
  * Special thanks go to user <a href="http://stackoverflow.com/users/15472/tucuxi">tucuxi at stackoverflow.com</a>
  * because his <a href="http://stackoverflow.com/a/2581450/1082681">answer</a> in one of the discussion threads
@@ -110,7 +110,7 @@ public class UpdateableTreeSet<E extends UpdateableTreeSet.Updateable> extends T
 	}
 
 	/**
-	 * Mark an element for subsequent update by {@link #updateAllMarked}.
+	 * Mark an element for subsequent update by {@link #updateMarked}.
 	 * <p>
 	 * <b>Attention:</b> Beware of manually modifying a marked element before its scheduled
 	 * update. It might not be found anymore (and thus not removed) because of its changed key,
@@ -128,7 +128,7 @@ public class UpdateableTreeSet<E extends UpdateableTreeSet.Updateable> extends T
 	}
 
 	/**
-	 * Mark an element for subsequent removal by {@link #updateAllMarked}.
+	 * Mark an element for subsequent removal by {@link #updateMarked}.
 	 * <p>
 	 * <b>Attention:</b> Beware of manually modifying a marked element before its scheduled
 	 * removal. It might not be found anymore (and thus not removed) because of its changed key,
@@ -156,7 +156,7 @@ public class UpdateableTreeSet<E extends UpdateableTreeSet.Updateable> extends T
 	 * not be found anymore (and thus not removed) because of their changed keys, which later
 	 * could lead to strange double entries in the collection.
 	 */
-	public synchronized void updateAllMarked() {
+	public synchronized void updateMarked() {
 		removeAll(toBeRemoved.keySet());
 		toBeRemoved.clear();
 		// Make sure to remove *all* update candidates before updating them. Otherwise re-insertion
@@ -185,7 +185,7 @@ public class UpdateableTreeSet<E extends UpdateableTreeSet.Updateable> extends T
 		toBeUpdated.clear();
 		for (E element : this)
 			markForUpdate(element);
-		updateAllMarked();
+		updateMarked();
 	}
 
 	/**

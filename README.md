@@ -63,7 +63,7 @@ class MyApplication {
         }
 
         // Trigger bulk update
-        mySortedSet.updateAllMarked();
+        mySortedSet.updateMarked();
     }
 }
 ``` 
@@ -71,7 +71,7 @@ class MyApplication {
 As you can see, all the magic is done by three methods of `UpdateableTreeSet`:
   * `markForUpdate`: mark an element as modified after you have changed its "sort key" property/properties.  
   * `markForRemoval`: mark an element as obsolete so it gets removed later.
-  * `updateAllMarked`: update/remove all marked elements in one batch operation.
+  * `updateMarked`: update/remove all marked elements in one batch operation.
 
-While you can call `markFor*` from within a loop safely, you should only call `updateAllMarked` after you are done with
+While you can call `markFor*` from within a loop safely, you should only call `updateMarked` after you are done with
 iterating over the set. That's all there is to it, it is really straightforward.
