@@ -91,8 +91,34 @@ public class UpdateableTreeSetTest
 		//
 		// Lesson learnt: Don't do this at home, kids! Use deferred updates as shown further below.
 		assertFalse(updateResult);
+
 		// Just to prove my point: The order within the SortedSet is broken.
 		assertFalse(isSortOrderOk(medalRanking));
+	}
+
+	@Test
+	public void updateAllAfterDirectPropertyChange() {
+		// Sort order should be OK before messing with properties
+		assertTrue(isSortOrderOk(medalRanking));
+
+		// Mark first element for removal (should not happen because updateAll should reset all marks)
+		medalRanking.markForRemoval(medalRanking.first());
+		// Wildly change element properties and add a new element
+		medalRanking.first().gold = 0;
+		medalRanking.last().country = "AAA";
+		medalRanking.add(new MedalCount("AUT", 1,  2,  3));
+		// Sort order is now broken
+		assertFalse(isSortOrderOk(medalRanking));
+
+		// Repair set by totally re-sorting it
+		medalRanking.updateAll();
+
+		// Sort order should now be OK again
+		assertEquals("AAA", medalRanking.first().country);
+		assertEquals("USA", medalRanking.last().country);
+		assertTrue(isSortOrderOk(medalRanking));
+		// Number of elements should still be 4 because remove marks should have been reset by updateAll
+		assertEquals(4, medalRanking.size());
 	}
 
 	@Test

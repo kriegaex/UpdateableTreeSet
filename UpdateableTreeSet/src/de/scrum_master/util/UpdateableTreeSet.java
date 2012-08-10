@@ -170,6 +170,25 @@ public class UpdateableTreeSet<E extends UpdateableTreeSet.Updateable> extends T
 	}
 
 	/**
+	 * Updates the total sort order of the set by removing and re-adding <b>all</b> elements.
+	 * <p>
+	 * You may use this method in situations when properties of elements within the set have been mofified,
+	 * which usually should be avoided. This method refreshes and in a way "repairs" the set, because if
+	 * you modify elements within the set, their fixed sort order might contradict their actual state,
+	 * which might disturb iterators and operations like {@link #contains} or {@link #remove}.
+	 * <p>
+	 * <b>Attention:</b> All previously recorded update/removal marks will be reset before the update,
+	 * so do not expect any elements to be removed by this operation.
+	 */
+	public synchronized void updateAll() {
+		toBeRemoved.clear();
+		toBeUpdated.clear();
+		for (E element : this)
+			markForUpdate(element);
+		updateAllMarked();
+	}
+
+	/**
 	 * Performs an immediate update on a single element so as to trigger its re-ordering
 	 * within the collection. Calling this method has no effect on the list of elements
 	 * marked for removal or update.
