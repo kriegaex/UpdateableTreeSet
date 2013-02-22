@@ -185,6 +185,33 @@ public class UpdateableTreeSetTest
 	}
 
 	@Test
+	public void addElementsDuringLoop() {
+		for (MedalCount medalCount : medalRanking) {
+			medalRanking.markForUpdate(
+				new MedalCount(
+						medalCount.country + "X",
+						medalCount.gold + 1,
+						medalCount.silver + 2,
+						medalCount.bronze + 3
+				)
+			);
+		}
+
+		// Perform bulk update
+		medalRanking.updateMarked();
+
+		// Number of elements should have doubled to 6 now
+		assertEquals(6, medalRanking.size());
+
+		// Check if some of the changed properties are as expected
+		assertEquals("USAX", medalRanking.first().country);
+		assertEquals(10, medalRanking.first().bronze);
+
+		// Check overall sort order
+		assertTrue(isSortOrderOk(medalRanking));
+	}
+
+	@Test
 	public void noValueBulkUpdate() {
 		// Verify that no-op update does not do any damage
 		medalRanking.markForUpdate(medalRanking.first());
