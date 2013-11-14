@@ -37,7 +37,7 @@
         <url>https://github.com/kriegaex/UpdateableTreeSet</url>
         <connection>scm:git:https://github.com/kriegaex/UpdateableTreeSet.git</connection>
         <developerConnection>scm:git:https://github.com/kriegaex/UpdateableTreeSet.git</developerConnection>
-      <tag>HEAD</tag>
+        <tag>HEAD</tag>
   </scm>
 
     <properties>
@@ -78,10 +78,11 @@
                 <version>2.2.1</version>
                 <executions>
                     <execution>
-                        <id>attach-sources</id>
+                        <id>package-sources</id>
                         <phase>package</phase>
                         <goals>
                             <goal>jar-no-fork</goal>
+                            <goal>test-jar</goal>
                         </goals>
                     </execution>
                 </executions>
@@ -92,13 +93,35 @@
                 <version>2.9.1</version>
                 <executions>
                     <execution>
-                        <id>attach-javadocs</id>
+                        <id>package-javadocs</id>
                         <phase>package</phase>
                         <goals>
                             <goal>jar</goal>
+                            <goal>test-jar</goal>
                         </goals>
                     </execution>
                 </executions>
+            </plugin>
+            <plugin>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>2.4</version>
+                <executions>
+                    <execution>
+                        <id>package-tests</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>test-jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <addDefaultSpecificationEntries>true</addDefaultSpecificationEntries>
+                            <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+                        </manifest>
+                    </archive>
+                </configuration>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
