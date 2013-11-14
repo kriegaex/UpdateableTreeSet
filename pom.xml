@@ -39,6 +39,7 @@
     <scm>
         <url>https://github.com/kriegaex/UpdateableTreeSet</url>
         <connection>scm:git:https://github.com/kriegaex/UpdateableTreeSet.git</connection>
+        <developerConnection>scm:git:https://github.com/kriegaex/UpdateableTreeSet.git</developerConnection>
     </scm>
 
     <properties>
@@ -100,6 +101,11 @@
                         </goals>
                     </execution>
                 </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-release-plugin</artifactId>
+                <version>2.4.1</version>
             </plugin>
         </plugins>
     </build>
