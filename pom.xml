@@ -10,7 +10,7 @@
 
     <groupId>de.scrum-master</groupId>
     <artifactId>updateable-tree-set</artifactId>
-    <version>1.1</version>
+    <version>1.2-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <name>UpdateableTreeSet</name>
@@ -37,7 +37,7 @@
         <url>https://github.com/kriegaex/UpdateableTreeSet</url>
         <connection>scm:git:https://github.com/kriegaex/UpdateableTreeSet.git</connection>
         <developerConnection>scm:git:https://github.com/kriegaex/UpdateableTreeSet.git</developerConnection>
-      <tag>release/1.1</tag>
+      <tag>HEAD</tag>
   </scm>
 
     <properties>
