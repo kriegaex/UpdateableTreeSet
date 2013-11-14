@@ -10,7 +10,7 @@
 
     <groupId>de.scrum-master</groupId>
     <artifactId>updateable-tree-set</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0</version>
     <packaging>jar</packaging>
 
     <name>UpdateableTreeSet</name>
@@ -37,7 +37,8 @@
         <url>https://github.com/kriegaex/UpdateableTreeSet</url>
         <connection>scm:git:https://github.com/kriegaex/UpdateableTreeSet.git</connection>
         <developerConnection>scm:git:https://github.com/kriegaex/UpdateableTreeSet.git</developerConnection>
-    </scm>
+      <tag>release/1.0</tag>
+  </scm>
 
     <properties>
         <!-- If you want to build from an IDE like IDEA or Eclipse and use GnuPG version >= v2.0,
