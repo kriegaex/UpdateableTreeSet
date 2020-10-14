@@ -33,14 +33,14 @@ import java.util.TreeSet;
  * <pre>
  * import de.scrum_master.util.UpdateableTreeSet;
  * import de.scrum_master.util.UpdateableTreeSet.Updateable;
-
+ *
  * class MyType implements Updateable {
  *     void update(Object newValue) {
  *         // Change the receiver's value
  *     }
  * }
  *
- * SortedSet<MyType> mySortedSet = new UpdateableTreeSet<MyType>();
+ * SortedSet&lt;MyType&gt; mySortedSet = new UpdateableTreeSet&lt;MyType&gt;();
  *
  * // Add elements to mySortedSet...
  *
@@ -192,7 +192,7 @@ public class UpdateableTreeSet<E extends UpdateableTreeSet.Updateable> extends T
 	 * Performs an immediate update on a single element so as to trigger its re-ordering
 	 * within the collection. Calling this method has no effect on the list of elements
 	 * marked for removal or update.
-	 * <ol>
+	 * <p>
 	 * <b>Attention:</b> Do not call this method while looping over the collection.
 	 *
 	 * @param element the element to be updated
