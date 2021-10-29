@@ -8,8 +8,8 @@ Java's [`TreeSet`](http://docs.oracle.com/javase/7/docs/api/java/util/TreeSet.ht
 of elements. This is cool, but it comes with a catch: elements are only sorted into the right places at insertion time,
 but the sort order is never checked or updated later if element properties relevant for sorting change. So the only way
 to update the sort order of a TreeSet is to temporarily remove a changed element and re-add it. This is tricky though,
-because you cannot do it within a loop. Quote from [JDK docs for `Iterator.remove()`]
-(http://docs.oracle.com/javase/7/docs/api/java/util/Iterator.html):
+because you cannot do it within a loop. Quote from
+[JDK docs for `Iterator.remove()`](http://docs.oracle.com/javase/7/docs/api/java/util/Iterator.html):
 
 > Removes from the underlying collection the last element returned by this iterator (optional operation).
 > This method can be called only once per call to next().
@@ -28,8 +28,8 @@ for (element : myTreeSet) {
 
 It gets even more complicated if you want to update an element by removing and re-adding it. This cannot be done from
 within a loop unless you create a copy of the set beforehand and loop over the copy so as not to disturb the iterator.
-This is all very tedious, see also the corresponding [discussion on StackOverflow.com]
-(http://stackoverflow.com/questions/2579679/maintaining-treeset-sort-as-object-changes-value) which sparked my idea of
+This is all very tedious, see also the corresponding
+[discussion on StackOverflow.com](http://stackoverflow.com/questions/2579679/maintaining-treeset-sort-as-object-changes-value) which sparked my idea of
 implementing `UpdateableTreeSet`. My user name there is also *kriegaex*, by the way.
 
 The solution
